@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "baseUrl": "src",
+        "outDir": "./js",
+        "noEmitOnError": true,
+        "watch": true,
+        "emitDecoratorMetadata": true,
+        "target": "ES6"
+
+    }
+}
