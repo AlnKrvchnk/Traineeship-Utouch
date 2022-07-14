@@ -7,6 +7,7 @@ import ChangeOrder from "../ChangeOrder/ChangeOrder"
 
 import styles from "./ToDoContainer.module.scss"
 import { Item } from "../../types/Item";
+import CustomInput from "../CustomInput/CustomInput";
 
 
 const ToDoContainer=()=>{
@@ -92,6 +93,11 @@ const ToDoContainer=()=>{
             <ChangeOrder
             setOrder={(val)=>setOrder(val)}
             isUp={isUp}
+            />
+
+            <CustomInput
+            type={'radio'}
+            checked={false}
             />
         </div>
         )
