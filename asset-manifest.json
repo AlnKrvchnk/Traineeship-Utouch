@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Traineeship-Utouch/static/css/main.52aacc61.css",
+    "main.js": "/Traineeship-Utouch/static/js/main.585b1af4.js",
+    "static/js/787.28cb0dcd.chunk.js": "/Traineeship-Utouch/static/js/787.28cb0dcd.chunk.js",
+    "index.html": "/Traineeship-Utouch/index.html",
+    "main.52aacc61.css.map": "/Traineeship-Utouch/static/css/main.52aacc61.css.map",
+    "main.585b1af4.js.map": "/Traineeship-Utouch/static/js/main.585b1af4.js.map",
+    "787.28cb0dcd.chunk.js.map": "/Traineeship-Utouch/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.52aacc61.css",
+    "static/js/main.585b1af4.js"
+  ]
+}
