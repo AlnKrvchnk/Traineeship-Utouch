@@ -1,0 +1,43 @@
+@import '../../variables.scss';
+
+.input{
+    width: -webkit-fill-available;
+    height: fit-content;
+
+    padding: 6px 12px ;
+
+    font-size: 14px;
+
+    background: $background;
+
+    border-radius: 8px;
+    border:2px solid $main-light;
+
+    outline: none;
+    opacity: 0.8;
+
+    &:hover{
+        opacity: 1;
+    }
+    &:focus{
+        border-color: $main;
+    }
+
+
+    ~label{
+        color: $error;
+        font-size: 12px;
+        font-weight: 500;
+        display: block;
+        text-align: end;
+        opacity: 0;
+        margin-right: 8px;
+    }
+    &.error{
+        border-color:$error;
+        ~label{
+            opacity: 1;
+        }
+    }
+
+}
