@@ -1,46 +1,48 @@
 @import '../../variables.scss';
 
-.simpleInput input{
+.simpleInput {
+    input{
 
-    width: -webkit-fill-available;
-    height: fit-content;
+        width: -webkit-fill-available;
+        height: fit-content;
 
-    padding: 6px 12px ;
+        padding: 6px 12px ;
 
-    font-size: 14px;
+        font-size: 14px;
 
-    background: $background;
+        background: $background;
 
-    border-radius: 8px;
-    border:2px solid $main-light;
+        border-radius: 8px;
+        border:2px solid $main-light;
 
-    outline: none;
-    opacity: 0.8;
+        outline: none;
+        opacity: 0.8;
 
-    &:hover{
-        opacity: 1;
-    }
-    &:focus{
-        border-color: $main;
-    }
-
-
-    ~label{
-        color: $error;
-        font-size: 12px;
-        font-weight: 500;
-        display: block;
-        text-align: end;
-        opacity: 0;
-        margin-right: 8px;
-    }
-    &.error{
-        border-color:$error;
-        ~label{
+        &:hover{
             opacity: 1;
+        }
+        &:focus{
+            border-color: $main;
+        }
+
+
+        ~label{
+            color: $error;
+            font-size: 12px;
+            font-weight: 500;
+            display: block;
+            text-align: end;
+            opacity: 0;
+            margin-right: 8px;
         }
     }
 
+}
+.error input{
+    border-color:$error!important;
+    ~label{
+        opacity: 1;
+    }
 }
 .checkBoxInput input{
         cursor: pointer;

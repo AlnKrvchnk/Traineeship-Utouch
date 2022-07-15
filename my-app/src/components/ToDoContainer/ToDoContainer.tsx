@@ -96,8 +96,15 @@ const ToDoContainer=()=>{
             />
 
             <CustomInput
+            type={'text'}
+            />
+
+            <CustomInput
+            type={'checkbox'}
+            />
+
+            <CustomInput
             type={'radio'}
-            checked={false}
             />
         </div>
         )
