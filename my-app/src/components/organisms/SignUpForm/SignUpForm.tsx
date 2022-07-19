@@ -5,6 +5,8 @@ import StyledForm from "../../containers/AuthContainer/StyledAuthForm";
 
 import CheckboxLabel from "../../molecules/CheckboxLabel/CheckboxLabel";
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+import { Paths } from "../../../routes/Paths";
 
 type FormData = {
   userName: string;
@@ -31,7 +33,6 @@ const SignUpForm = () => {
 
   return (
     <StyledForm onSubmit={onSubmit}>
-
       <span />
       <span />
 
@@ -50,27 +51,30 @@ const SignUpForm = () => {
         primary={true}
         placeholder={"Введите пароль"}
         value={userPassword}
-        onChange={(e) => setPassword(e.target.value)}/>
+        onChange={(e) => setPassword(e.target.value)}
+      />
 
       <CheckboxLabel
         id="checkbox"
         primary={true}
         checked={isChecked}
-        onChange={() => setChecked(!isChecked)}>
+        onChange={() => setChecked(!isChecked)}
+      >
         Бла-бла-бла
       </CheckboxLabel>
 
       <span />
-
-      <Button
-        small={false}
-        disabled={isDisable}
-        onClick={() => {
-          setValue("userName", "");
-        }}>
-        Вход
-      </Button>
-
+      <Link to={Paths.ToDo}>
+        <Button
+          small={false}
+          disabled={isDisable}
+          onClick={() => {
+            setValue("userName", "");
+          }}
+        >
+          Вход
+        </Button>
+      </Link>
     </StyledForm>
   );
 };

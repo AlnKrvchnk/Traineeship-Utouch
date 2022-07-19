@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import {Paths} from "../../../routes/Paths";
 
 import ItemList from "../../organisms/ItemList/ItemList";
 
@@ -7,13 +8,16 @@ import ToDoHeader from "../../organisms/ToDoHeader/ToDoHeader";
 import Button from "../../atoms/Button/Button";
 import { Div } from "./StyledToDoPageConatainer";
 import { Title } from "../../atoms/TextElement/TextElement";
+import { Link } from "react-router-dom";
 
 interface Props{
-    data:Item[]
+    data:Item[],
+    postItem:(item:Item)=>void
+    deleteItem:(id:string)=>void
 }
 
 
-const ToDoPageContainer=({data}:Props)=>{
+const ToDoPageContainer=({data,postItem, deleteItem}:Props)=>{
 
     const [items, setItems] = useState<Item[]>(data);
 
@@ -22,11 +26,14 @@ const ToDoPageContainer=({data}:Props)=>{
     useEffect(()=>{
         if(items.length===0)setItemExist('Создайте первую задачу!')
         else setItemExist('')
-    })
+    },[items])
+
+    
     
 
     const remove = (id:string) => {
         setItems(prev => prev.filter(item => item.id !== id && !item.isSelect))
+        deleteItem(id)
     }
 
     const complete = (id:string) => {
@@ -46,9 +53,9 @@ const ToDoPageContainer=({data}:Props)=>{
         
     }
     const add = (title: string) => {
-        let lastIndex='';
+        let lastIndex='0';
         if(items.length!==0){
-            lastIndex=items[items.length-1].id + '0';
+            lastIndex=items[items.length-1].id + '1';
         }
         const item: Item = {
             id:lastIndex,
@@ -58,15 +65,19 @@ const ToDoPageContainer=({data}:Props)=>{
             isSelect:false,
         }
         setItems([...items,item])
+        postItem(item)
 
     }
+
+    
     
     
 
     return (
         <Div >
-            <Button small={false}>Выйти</Button>
-            
+            <Link to={Paths.SignIn}>
+                <Button small={false}>Выйти</Button>
+            </Link>
             <ToDoHeader addItem={(title)=>add(title)}/>
             <ItemList
                 items={items}

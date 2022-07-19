@@ -17,4 +17,8 @@ export default class TodoApi {
     public create(dto: CreateItemToDo): Promise<Item> {
         return this.api.post<CreateItemToDo, Item>(todo.create(), dto)
     }
+
+    public delete(id:string): Promise<Item> {
+        return this.api.delete<Item>(todo.delete(id))
+    }
 }

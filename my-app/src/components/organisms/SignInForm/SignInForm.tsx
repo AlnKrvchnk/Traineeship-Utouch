@@ -5,6 +5,8 @@ import StyledForm from "../../containers/AuthContainer/StyledAuthForm";
 
 import CheckboxLabel from "../../molecules/CheckboxLabel/CheckboxLabel";
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+import { Paths } from "../../../routes/Paths";
 
 type FormData = {
   userName: string;
@@ -61,15 +63,16 @@ const SignInForm = () => {
       </CheckboxLabel>
 
       <span />
-
-      <Button
-        small={false}
-        disabled={isDisable}
-        onClick={() => {
-          setValue("userName", "");
-        }}>
-        Вход
-      </Button>
+        <Link to={Paths.ToDo}>
+        <Button
+          small={false}
+          disabled={isDisable}
+          onClick={() => {
+            setValue("userName", "");
+          }}>
+          Вход
+        </Button>
+        </Link>
 
     </StyledForm>
   );

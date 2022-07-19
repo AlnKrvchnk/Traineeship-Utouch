@@ -1,8 +1,11 @@
 import ItemInform from "../../molecules/ItemsInform/ItemsInform";
 import ItemsHeader from "../../molecules/ItemsHeader/ItemsHeader";
 import { Container, Div, Button} from "./StyledItem";
+import { Link } from "react-router-dom";
+import { Paths } from "../../../routes/Paths";
 
 interface Props {
+  id:string,
   title: string;
   date: Date;
   isCompleted: boolean;
@@ -13,6 +16,7 @@ interface Props {
 }
 
 const Item = ({
+  id,
   title,
   date,
   isCompleted,
@@ -22,13 +26,17 @@ const Item = ({
   onSelect,
 }: Props) => {
 
-  return (
-    <Container isActive={isCompleted||isSelect} >
-      <Div>
-        <ItemsHeader onSelect={onSelect} onDelete={onDelete} />
-        <ItemInform title={title} date={date}></ItemInform>
-      </Div>
-      <Button onClick={() => onCompleted()}>{!isCompleted ? 'Выполнено':'Не выполнено'}</Button>
+    return (
+      <Container isActive={isCompleted||isSelect} >
+        
+          <Div>
+            <ItemsHeader onSelect={onSelect} onDelete={onDelete} />
+            <Link to={`${Paths.ToDo}/${id}`}>
+              <ItemInform title={title} date={date}></ItemInform>
+            </Link>
+            </Div>
+        
+        <Button onClick={() => onCompleted()}>{!isCompleted ? 'Выполнено':'Не выполнено'}</Button>
     </Container>
   );
 };

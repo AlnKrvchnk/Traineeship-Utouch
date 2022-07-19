@@ -16,7 +16,21 @@ const ToDo =()=>{
             .catch(err => alert(err))
     }, []);
 
-    return <ToDoPageContainer data={items}/>
+    const postRequest=(item:Item)=>{
+        api.todo.create(item)
+            .then(res=>alert('Задача добавлена!'))
+            .catch(err=>alert(err))
+    }
+    const deleteRequest=(id:string)=>{
+        api.todo.delete(id)
+            .then(res=>alert('Задача удалена!'))
+            .catch(err=>alert(err))
+    }
+
+    return <ToDoPageContainer 
+        data={items} 
+        postItem={(item)=>postRequest(item)}
+        deleteItem={(id)=>deleteRequest(id)}/>
 };
 
 export default ToDo
