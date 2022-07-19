@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate} from 'react-router-dom';
 import {Paths} from "./routes/Paths";
 import {SignIn, SignUp, ToDo, ToDoDetail} from './components/pages/index'
 
@@ -7,7 +7,10 @@ function App() {
     return (
         <div className="App">
             <Routes>
-                <Route path={Paths.Main} element={<SignIn/>}/>
+                <Route
+                    path={Paths.Main}
+                    element={<Navigate to={Paths.SignIn} replace />}
+                />
                 <Route path={Paths.SignIn} element={<SignIn/>}/>
                 <Route path={Paths.SignUp} element={<SignUp/>}/>
                 <Route path={Paths.ToDo} element={<ToDo/>}/>

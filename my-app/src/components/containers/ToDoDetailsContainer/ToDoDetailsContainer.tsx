@@ -56,7 +56,7 @@ const ToDoDetailsContainer = ({ currentItemId }: Props) => {
       </Container>
       <Nav
         links={items.map((item) => {
-          return { url: `/todo/${String(item.id)}`, title: item.title };
+          return { url: `${Paths.ToDo}/${String(item.id)}`, title: item.title };
         })}
       />
       <Div>
