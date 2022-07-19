@@ -1,18 +1,22 @@
 {
     "User": {
-        "1":{
-            "userName": "userName" ,
-            "userPassword": "12345678"
-        }
+            "userName":  { "string": {} },
+            "userPassword": { "string": {} }
+     
     },
-    "Items": {
-        "1":{
-            "id":"1",
-            "title": "title",
-            "date": "Date",
-            "isCompleted": false,
-            "isSelect":false
-        }
+    "Item": {
+            "itemUser": {
+        "belongsTo": "User"
+            }
+            
+            "id":{ "int": { "min": 0, "max": 1000000 } }"1",
+            "title": { "string": {} },
+            "date":"dateTime": {
+                  "min": "2010-01-01T00:00:00Z",
+                  "max": "2020-12-31T23:59:59Z"
+    },
+            "isCompleted": "boolean": {},
+            "isSelect":"boolean": {}
       
     }
   }
