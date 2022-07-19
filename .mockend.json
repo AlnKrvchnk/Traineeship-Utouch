@@ -5,16 +5,14 @@
      
     },
     "Item": {
-            "itemUser": {
-        "belongsTo": "User"
-            }
+            "itemUser": {"belongsTo": "User"}
             
-            "id":{ "int": { "min": 0, "max": 1000000 } }"1",
+            "id":{ "int": { "min": 0, "max": 1000000 } },
             "title": { "string": {} },
             "date":"dateTime": {
                   "min": "2010-01-01T00:00:00Z",
                   "max": "2020-12-31T23:59:59Z"
-    },
+                    },
             "isCompleted": "boolean": {},
             "isSelect":"boolean": {}
       
