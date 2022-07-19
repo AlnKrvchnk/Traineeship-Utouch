@@ -1,7 +1,7 @@
 import {Item} from './Item'
 
 export interface User {
-    userName:string,
+    Name:string,
     password:string,
-    toDoList:Item[]
+    toDoList?:Item[]
 }

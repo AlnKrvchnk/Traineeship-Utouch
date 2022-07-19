@@ -8,7 +8,8 @@ export const todo = {
 export const auth = {
     // getAll: () => '/users',
     // getById: (id: number) => `/auth/${id}`,
-    create: () => '/auth',
+    signUp: () => '/signUp',
+    signIn: () => '/signIn',
     // delete: (id: number) =>`/auth/${id}`,
-    update: (id: number) => `/auth/${id}`,
+    // update: (id: number) => `/auth/${id}`,
 }

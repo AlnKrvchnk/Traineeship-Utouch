@@ -1,15 +1,18 @@
 import axios, {AxiosInstance} from 'axios'
 import {config} from "./config";
 import TodoApi from "./todo.api";
+import AuthApi from "./auth.api";
 
 
 class Api {
     private readonly client: AxiosInstance
     public readonly todo: TodoApi
+    public readonly auth: AuthApi
 
     constructor() {
         this.client = axios.create(config)
         this.todo = new TodoApi(this)
+        this.auth= new AuthApi(this)
 
         this.client.interceptors.response.use((res) => res.data)
         this.client.interceptors.request.use((config) => ({
@@ -19,7 +22,7 @@ class Api {
     }
     
     public get<Response>(url: string): Promise<Response> {
-        return this.client.get<null, Response>('Тест')
+        return this.client.get<null, Response>(url)
     }
 
     public post<Request, Response>(url: string, body: Request): Promise<Response> {
