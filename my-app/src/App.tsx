@@ -7,6 +7,7 @@ function App() {
     return (
         <div className="App">
             <Routes>
+                <Route path={Paths.Main} element={<SignIn/>}/>
                 <Route path={Paths.SignIn} element={<SignIn/>}/>
                 <Route path={Paths.SignUp} element={<SignUp/>}/>
                 <Route path={Paths.ToDo} element={<ToDo/>}/>
@@ -18,3 +19,20 @@ function App() {
 }
 
 export default App;
+
+// const navigate = useNavigate()
+//     const location = useLocation()
+
+//     useEffect(() => {
+
+//     }, [location])
+
+//     useEffect(() => {
+//         if (params.id) {
+//             const id = parseInt(params.id)
+//             if (id === 5) {
+//                 navigate(Paths.SignIn, { state: location.pathname })
+//             }
+//         }
+//     }, [params.id])
+

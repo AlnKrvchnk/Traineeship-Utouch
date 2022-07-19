@@ -1,9 +1,10 @@
 import {Link} from '../types/Link'
 
 export enum Paths {
-    SignIn = '/signin',
-    SignUp = '/signUp',
-    ToDo='/todo'
+    Main = '/Traineeship-Utouch/',
+    SignIn = '/Traineeship-Utouch/signin',
+    SignUp = '/Traineeship-Utouch/signUp',
+    ToDo='/Traineeship-Utouch/todo'
 }
 
 const signIn:Link={url:Paths.SignIn, title:'Авторизация'}

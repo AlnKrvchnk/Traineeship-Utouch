@@ -11,22 +11,7 @@ type Params = {
 }
 const ToDoDetail: FC<Props> = ({}) => {
     const params = useParams<Params>()
-    const navigate = useNavigate()
-    const location = useLocation()
-
-    useEffect(() => {
-
-    }, [location])
-
-    useEffect(() => {
-        if (params.id) {
-            const id = parseInt(params.id)
-            if (id === 5) {
-                navigate(Paths.SignIn, { state: location.pathname })
-            }
-        }
-    }, [params.id])
-
+    
     return (<ToDoDetailsContainer currentItemId={String(params.id) }/>)
 }
 
