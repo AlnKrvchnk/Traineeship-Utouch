@@ -1,7 +1,8 @@
 export interface Item {
-    id:number 
+    id:string
     title: string
     date: Date
     isCompleted: boolean
     isSelect:boolean
 }
+
