@@ -11,6 +11,10 @@ const ToDo =()=>{
 
 
     useEffect(() => {
+        // fetch('https://mockend.com/AlnKrvchnk/Traineeship-Utouch/Item')
+        //     .then(response => response.json())
+        //     .then(json => setItems(json))
+        //     .catch(err=>console.log(err))
         api.todo.getAll()
             .then(res =>setItems(res))
             .catch(err => alert(err))

@@ -19,9 +19,13 @@ interface Props{
 
 const ToDoPageContainer=({data,postItem, deleteItem}:Props)=>{
 
-    const [items, setItems] = useState<Item[]>(data);
+    const [items, setItems] = useState<Item[]>([]);
 
     const [itemsExist, setItemExist]= useState<string>();
+
+    useEffect(()=>{
+        setItems(data)
+    })
 
     useEffect(()=>{
         if(items.length===0)setItemExist('Создайте первую задачу!')
@@ -68,10 +72,6 @@ const ToDoPageContainer=({data,postItem, deleteItem}:Props)=>{
         postItem(item)
 
     }
-
-    
-    
-    
 
     return (
         <Div >

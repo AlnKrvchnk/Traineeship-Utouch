@@ -1,6 +1,6 @@
 export const todo = {
-    getAll: () => '/todo',
-    getById: (id: number) => `/todo/${id}`,
+    getAll: () => '/Item',
+    getById: (id: number) => `/Item/${id}`,
     create: () => '/todo',
     delete: (id: string) =>`/todo/${id}`,
     update: (id: number) => `/todo/${id}`,

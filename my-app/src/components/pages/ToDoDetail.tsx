@@ -3,8 +3,7 @@ import {FC, useEffect, useId} from "react";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {Paths} from "../../routes/Paths";
 
-interface Props {
-}
+interface Props {}
 
 type Params = {
     id: string

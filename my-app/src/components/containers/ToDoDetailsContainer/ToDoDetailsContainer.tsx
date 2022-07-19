@@ -17,7 +17,7 @@ interface Props {
 
 const ToDoDetailsContainer = ({ currentItemId }: Props) => {
   
-  const [currentItem, setCurentItem] = useState<Item>({
+  const [currentItem, setCurrentItem] = useState<Item>({
     id: currentItemId,
     title: "CurrentItem",
     date: new Date(),
@@ -25,21 +25,23 @@ const ToDoDetailsContainer = ({ currentItemId }: Props) => {
     isSelect: false,
   });
   const [items, setItems] = useState<Item[]>([
-    {
-      id: "1",
-      title: "First",
+    {id: currentItemId,
+      title: "CurrentItem",
       date: new Date(),
       isCompleted: false,
-      isSelect: false,
-    },
-    {
-      id: "2",
-      title: "Second",
-      date: new Date(),
-      isCompleted: false,
-      isSelect: false,
-    },
+      isSelect: false,},
+      {id: '2',
+        title: "CurrentItem",
+        date: new Date(),
+        isCompleted: false,
+        isSelect: false,},
+    
   ]);
+
+  // useEffect(()=>{
+  //   setItems(items)
+  //   setCurrentItem()
+  // })
 
   return (
     <div>

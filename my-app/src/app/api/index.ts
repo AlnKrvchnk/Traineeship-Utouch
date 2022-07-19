@@ -17,7 +17,7 @@ class Api {
         this.client.interceptors.response.use((res) => res.data)
         this.client.interceptors.request.use((config) => ({
             ...config,
-            headers: { Authorization: 'token' }
+            // headers: { Authorization: 'token' },
         }))
     }
     
