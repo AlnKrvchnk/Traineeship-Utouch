@@ -10,12 +10,11 @@ import { Paths } from "../../../routes/Paths";
 import {api} from "../../../app/api";
 import { User } from "../../../types/User";
 
-type FormData = {
-  userName: string;
-  password: string;
-};
+export interface Props{
+  onAuth:(user:User)=>void
+}
 
-const SignInForm = () => {
+const SignInForm = ({onAuth}:Props) => {
   const [isChecked, setChecked] = useState<boolean>(false);
   const [userName, setUserName] = useState<string>('');
   const [userPassword, setPassword] = useState<string>('');
@@ -34,9 +33,7 @@ const SignInForm = () => {
   const onSubmit = ()=>{
     if (!isDisable){
       const user:User={Name:userName,password:userPassword};
-      api.auth.signIn(user)
-        .then(res=>alert('Пользователь вошёл в систему!'))
-        .catch(err=>alert(err))
+      onAuth(user)
   }};
 
   return (
