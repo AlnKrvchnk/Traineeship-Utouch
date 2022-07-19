@@ -16,6 +16,7 @@ interface Props {
 }
 
 const ToDoDetailsContainer = ({ currentItemId }: Props) => {
+  
   const [currentItem, setCurentItem] = useState<Item>({
     id: currentItemId,
     title: "CurrentItem",
