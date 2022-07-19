@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Traineeship-Utouch/static/css/main.fc03a584.css",
-    "main.js": "/Traineeship-Utouch/static/js/main.ea23339b.js",
+    "main.js": "/Traineeship-Utouch/static/js/main.1e4fe454.js",
     "index.html": "/Traineeship-Utouch/index.html",
     "main.fc03a584.css.map": "/Traineeship-Utouch/static/css/main.fc03a584.css.map",
-    "main.ea23339b.js.map": "/Traineeship-Utouch/static/js/main.ea23339b.js.map"
+    "main.1e4fe454.js.map": "/Traineeship-Utouch/static/js/main.1e4fe454.js.map"
   },
   "entrypoints": [
     "static/css/main.fc03a584.css",
-    "static/js/main.ea23339b.js"
+    "static/js/main.1e4fe454.js"
   ]
 }
