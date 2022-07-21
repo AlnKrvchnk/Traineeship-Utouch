@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className="App">
-        { hasToken || isAuth ? 
+        { hasToken && isAuth ? 
           (isLoad ? <Private/> : <Loading/> )
         : 
           <Public/>

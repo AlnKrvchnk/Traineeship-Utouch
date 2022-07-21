@@ -24,6 +24,7 @@ const Item = ({
   return (
     <div>
     <TitleSecondary light={false}>{title}</TitleSecondary>
+    <br />
     <DateText light={false}>{date}</DateText>
     </div>
   );

@@ -4,7 +4,11 @@ import styled from "styled-components";
 import {color} from "../../../styles/variables";
 
 const StyledNavLink= styled(NavLink)`
-  width:100%;
+  overflow:hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  min-width: 10vw;
+  width: 100%;
   text-align:center;
   text-decoration:none;
   background-color: ${color.primaryDark};

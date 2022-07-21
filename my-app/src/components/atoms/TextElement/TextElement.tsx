@@ -54,9 +54,8 @@ display: inline-block;
 
 const TitleThird = styled.h3<Props>`
 display: inline-block;
-  font-weight: 500;
+  font-weight: 4  00;
   font-size: 20px;
-  letter-spacing: 0.16em;
   ${(props) =>
     props.light &&
     `

@@ -5,6 +5,7 @@ import {SignIn, SignUp, } from "../components/pages/index"
 const Public = () => {
     return (
         <Routes>
+            <Route path={Paths.Main} element={<SignIn/>} />
             <Route path={Paths.SignIn} element={<SignIn/>} />
             <Route path={Paths.SignUp} element={<SignUp/>} />
             <Route path={'*'} element={<Navigate to={Paths.SignIn} replace />} />

@@ -5,6 +5,7 @@ import {ToDo,ToDoDetail,NotFound} from "../components/pages/index"
 const Private = () => {
     return (
         <Routes>
+            <Route path={Paths.Main} element={<Navigate to={Paths.ToDo} replace/>} />
             <Route path={Paths.SignIn} element={<Navigate to={Paths.ToDo} replace/>} />
             <Route path={Paths.SignUp} element={<Navigate to={Paths.ToDo} replace/>} />
             <Route path={Paths.ToDo} element={<ToDo/>} />
