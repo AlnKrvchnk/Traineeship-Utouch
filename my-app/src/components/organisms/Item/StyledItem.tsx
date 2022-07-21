@@ -3,7 +3,8 @@ import { ProgressPlugin } from "webpack";
 import { color } from "../../../styles/variables"
 
 export interface DivProps{
-    isActive:boolean;
+    isComplited:boolean,
+    isSelected:boolean,
 }
 
 export const Container =styled.div<DivProps>`
@@ -14,9 +15,13 @@ export const Container =styled.div<DivProps>`
     border: 3px solid ${color.background};
     border-radius:24px;
     transition: all 0.3s ease;
-    ${props=>props.isActive &&`
+    ${props=>props.isComplited &&`
         background: ${color.primaryDark};
         border: 3px solid ${color.primaryDark};
+    `}
+    ${props=>props.isSelected &&`
+        background: ${color.primaryDark};
+        border: 3px solid ${color.background};
     `}
 `;
 

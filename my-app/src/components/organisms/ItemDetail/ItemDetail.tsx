@@ -1,9 +1,11 @@
 import { TitleSecondary } from "../../atoms/TextElement/TextElement";
 import { DateText } from "../../atoms/TextElement/Date";
+import { dateT } from "../../../app/types/Item";
+
 
 interface Props {
   title: string;
-  date: Date;
+  date: dateT;
   isCompleted: boolean;
   isSelect:boolean;
   // onDelete: () => void;
@@ -14,11 +16,6 @@ interface Props {
 const Item = ({
   title,
   date,
-  isCompleted,
-  isSelect,
-  // onCompleted,
-  // onDelete,
-  // onSelect,
 }: Props) => {
 
   return (

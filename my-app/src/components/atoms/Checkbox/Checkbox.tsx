@@ -1,6 +1,8 @@
 import { InputHTMLAttributes } from "react";
 import {StyledCheckbox,StyledLabel, Props} from './StyledCheckbox'
 import {RelativeDiv} from '../Div/StyledDiv'
+import { useState } from "react";
+import { useEffect } from "react";
 
 
 
@@ -14,6 +16,12 @@ const Checkbox = ({
  onChange
 }: CheckboxProps) => {
   
+  const[isChecked, setChecked]= useState<boolean>(false)
+
+  const handleChange=useEffect(()=>{
+    setChecked(checked as boolean)
+  })
+
   return (
     <span>
     <RelativeDiv>
@@ -22,12 +30,12 @@ const Checkbox = ({
         primary={primary} 
         type={'checkbox'}
         onChange={onChange} 
-        checked={checked as boolean}/>
+        checked={isChecked}/>
 
       <StyledLabel 
         htmlFor={id} 
         primary={primary} 
-        checked={checked as boolean}/>
+        checked={isChecked}/>
     </RelativeDiv>
     </span>
   );

@@ -21,7 +21,7 @@ const AddItem =({onAdd}:Props)=>{
     }
     
     return (
-        <div>
+        <form onSubmit={add}>
             <Input
                 primary={false}
                 placeholder={'Новая задача'}
@@ -30,7 +30,7 @@ const AddItem =({onAdd}:Props)=>{
             ></Input>
             <StyledButton onClick={add} disabled={isDisabled}>Добавить</StyledButton>
 
-        </div>
+        </form>
     )
 }
 export default AddItem;

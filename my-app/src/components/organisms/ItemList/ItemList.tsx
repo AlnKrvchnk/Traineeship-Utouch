@@ -1,31 +1,45 @@
-import {Item} from '../../../app/types/Item'
-import { useTypedSelectorHook } from '../../../hooks/useTypedSelector'
-import ItemContainer from '../ItemContainer/ItemContainer'
-import {Div} from './StyledItemList'
+import { useEffect, useMemo, useState } from "react";
+import { idT, Item } from "../../../app/types/Item";
+import ItemContainer from "../ItemContainer/ItemContainer";
+import { Div } from "./StyledItemList";
 
+interface Props {
+  items: Item[];
+  selectedItems: idT[];
 
-interface Props{
-    items:Item[],
-    deleteItem:(val:string)=>void
-    completeItem:(val:string)=>void
-    selectItem:(val:string)=>void
+  deleteItem: (val: idT) => void;
+  completeItem: (val: idT) => void;
+  selectItem: (val: idT) => void;
 }
 
-const ItemList = ({items, deleteItem,completeItem,selectItem}:Props) => {
-    
-    return (
-        <Div>
-            {items.map((item, index) => (
-                <ItemContainer
-                    item={item}
-                    key={index}
-                    onDelete={(id)=>deleteItem(id)}
-                    onComplete={(id)=>completeItem(id)}
-                    onSelect={(id)=>selectItem(id)}
-                    />
-                ))}
-        </Div>
-    )
-}
+const ItemList = ({
+  items,
+  selectedItems,
 
-export default ItemList
+  deleteItem,
+  completeItem,
+  selectItem,
+}: Props) => {
+  const [selectedItemsList, setSelect] = useState<Item["id"][]>([]); ///Так можно делать? <Item['id']>?
+
+  const setSelectValue = useEffect(() => {
+    setSelect(selectedItems);
+  });
+
+  return (
+    <Div>
+      {items.map((item, index) => (
+        <ItemContainer
+          item={item}
+          key={index}
+          isSelect={selectedItemsList.includes(item.id)}
+          onSelect={(id) => selectItem(id)}
+          onDelete={(id) => deleteItem(id)}
+          onComplete={(id) => completeItem(id)}
+        />
+      ))}
+    </Div>
+  );
+};
+
+export default ItemList;

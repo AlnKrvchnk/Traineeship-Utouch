@@ -46,8 +46,8 @@ export const slice= createSlice({
 
         },
     },
-    extraReducers: builder => {
-        builder
+    extraReducers: builders => {
+        builders
             .addCase(getTodoThunk.pending, (state) => {
                 state.loading = true
             })
@@ -63,30 +63,30 @@ export const slice= createSlice({
                 // state.push(payload as any)
             })
 
-            // .addCase(deleteTodoThunk.fulfilled, (state, { payload }) => {
-            //     console.log(payload)
-            //     // state.push(payload as any)
-            // })
-            // .addCase(deleteTodoThunk.rejected, (state, { payload }) => {
-            //     console.log(payload)
-            //     // state.push(payload as any)
-            // })
+            .addCase(deleteTodoThunk.fulfilled, (state, { payload }) => {
+                console.log(payload)
+                // state.push(payload as any)
+            })
+            .addCase(deleteTodoThunk.rejected, (state, { payload }) => {
+                console.log(payload)
+                // state.push(payload as any)
+            })
 
-            // .addCase(addTodoThunk.fulfilled, (state, { payload }) => {
-            //     console.log(payload)
-            //     // state.push(payload as any)
-            // })
-            // .addCase(addTodoThunk.rejected, (state, { payload }) => {
-            //     console.log(payload)
-            //     // state.push(payload as any)
-            // })
+            .addCase(addTodoThunk.fulfilled, (state, { payload }) => {
+                console.log(payload)
+                // state.push(payload as any)
+            })
+            .addCase(addTodoThunk.rejected, (state, { payload }) => {
+                console.log(payload)
+                // state.push(payload as any)
+            })
     }
 })
 
 export const getTodoThunk = createAsyncThunk('@@todo/get', async () => {
     return await api.todo.getAll();
 })
-export const addTodoThunk = createAsyncThunk('@@todo/get', async (item:Item) => {
+export const addTodoThunk = createAsyncThunk('@@todo/add', async (item:Item) => {
     return await api.todo.create(item);
 })
 export const deleteTodoThunk = createAsyncThunk('@@todo/delete', async (id:string) => {

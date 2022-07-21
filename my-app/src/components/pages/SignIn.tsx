@@ -9,7 +9,6 @@ import { useTypedSelectorHook } from "../../hooks/useTypedSelector";
 const SignIn =()=>{
 
     const dispatch = useDispatch()
-    // const auth = useTypedSelectorHook(state => state.auth)
 
     const login = (user:User) => {
         dispatch(loginThunk(user))

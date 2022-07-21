@@ -27,7 +27,7 @@ export const StyledLabel = styled.label<ILabel>`
     content: "";
     width: 16px;
     height: 16px;
-    border: 3px solid;
+    border: 3px solid ${color.background};
     border-radius: 5px;
     display: inline-block;
     vertical-align: sub;
@@ -35,48 +35,8 @@ export const StyledLabel = styled.label<ILabel>`
   }
   ${(props) =>
     props.checked &&
-    `
-        &:after{
-            cursor:pointer;
-            content: '';
-            top: 4px;
-            left: 5px;
-            width: 12px;
-            height: 12px;
-            border-radius: 2px;
-            display: inline-block;
-            position: absolute;
-        }`}
-  ${(props) =>
-    props.primary &&
-    `
-        &:before{
-            border-color:${color.background};
-            &:hover{
-                border-color:${color.background};
-            }
-        }
-        &::after{
-            background: ${color.background};
-            &:hover{
-                background:${color.background};
-            }
-        }
-    `}
-    ${(props) =>
-    !props.primary &&
-    `
-        &:before{
-            border-color:${color.primary};
-            &:hover{
-                border-color:${color.primaryDark};
-            }
-        }
-        &::after{
-            background:${color.primary};
-            &:hover{
-                background:${color.primaryDark};
-            }
-        }
-    `}
+    `&:before {
+    background:${color.background}
+  }`}
+  
 `;

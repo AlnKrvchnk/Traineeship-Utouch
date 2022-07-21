@@ -60,7 +60,7 @@ const ToDoDetailsContainer = ({ currentItemId }: Props) => {
       <Div>
         <ItemDetail
           title={`${currentItem ? currentItem.id : ''}. ${currentItem ? currentItem.title : ''}`}
-          date={currentItem ? currentItem.date : new Date()}
+          date={currentItem ? currentItem.date : ''}
           isCompleted
           isSelect
         />

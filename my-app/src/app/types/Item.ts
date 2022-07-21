@@ -1,11 +1,15 @@
+export type dateT = string;
+export type idT = number;
+
+
 export interface Item {
-    id:string
-    title: string
-    date: Date
-    isCompleted: boolean
-    isSelect:boolean
+    id:idT,
+    title: string,
+    date: dateT,
+    isCompleted: boolean,
 }
 
 export interface CreateItemToDo {
     title: string
 }
+
