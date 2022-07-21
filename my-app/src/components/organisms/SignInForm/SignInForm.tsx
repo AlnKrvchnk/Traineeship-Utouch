@@ -8,7 +8,7 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Paths } from "../../../routes/Paths";
 import {api} from "../../../app/api";
-import { User } from "../../../types/User";
+import { User } from "../../../app/types/User";
 
 export interface Props{
   onAuth:(user:User)=>void

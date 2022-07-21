@@ -1,5 +1,5 @@
 import Api from "./index";
-import {CreateItemToDo, Item} from "../types/Types";
+import {CreateItemToDo, Item} from "../types/Item";
 import {todo} from "./endpoints";
 
 export default class TodoApi {

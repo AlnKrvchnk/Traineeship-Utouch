@@ -2,7 +2,7 @@ import { link } from "fs"
 import NavLink from "../../atoms/NavLink/NavLink"
 import StyledNav from "./StyledNav"
 
-import {Link} from '../../../types/Link'
+import {Link} from '../../../app/types/Link'
 
 export interface Props {
     links:Link[]

@@ -1,7 +1,7 @@
 import Api from "./index";
-import {CreateItemToDo, Item} from "../types/Types";
+import {Item} from "../types/Item";
 import {auth} from "./endpoints";
-import { User } from "../../types/User";
+import { User } from "../types/User";
 
 export default class TodoApi {
     constructor(private readonly api: Api) {}

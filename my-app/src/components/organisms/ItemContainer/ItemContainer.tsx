@@ -1,5 +1,5 @@
 import ItemComponent from '../Item/Item'
-import {Item} from '../../../types/Item'
+import {Item} from '../../../app/types/Item'
 import { Link } from 'react-router-dom'
 
 interface Props {

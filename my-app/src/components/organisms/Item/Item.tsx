@@ -30,7 +30,7 @@ const Item = ({
       <Container isActive={isCompleted||isSelect} >
         
           <Div>
-            <ItemsHeader onSelect={onSelect} onDelete={onDelete} />
+            <ItemsHeader isSelect={isSelect} onSelect={onSelect} onDelete={onDelete} />
             <Link to={`${Paths.ToDo}/${id}`}>
               <ItemInform title={title} date={date}></ItemInform>
             </Link>

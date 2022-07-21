@@ -1,54 +1,51 @@
-import {useEffect, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {Paths} from "../../../routes/Paths";
 
 import ItemList from "../../organisms/ItemList/ItemList";
 
-import { Item } from "../../../types/Item";
+import { Item } from "../../../app/types/Item";
 import ToDoHeader from "../../organisms/ToDoHeader/ToDoHeader";
 import Button from "../../atoms/Button/Button";
 import { Div } from "./StyledToDoPageConatainer";
 import { Title } from "../../atoms/TextElement/TextElement";
 import { Link } from "react-router-dom";
+import { useTypedSelectorHook } from "../../../hooks/useTypedSelector";
+import { useDispatch } from "../../../hooks/useAppDispatch";
+import { actions } from "../../../app/store/todo/slice";
+import { actions as actionsAuth } from "../../../app/store/auth/slice";
 
-interface Props{
-    data:Item[],
-    postItem:(item:Item)=>void
-    deleteItem:(id:string)=>void
-}
+const ToDoPageContainer=()=>{
 
+    const dispatch = useDispatch()
 
-const ToDoPageContainer=({data,postItem, deleteItem}:Props)=>{
+    const itemsList:Item [] = useTypedSelectorHook(state => state.todo.items)
 
     const [items, setItems] = useState<Item[]>([]);
 
-    const [itemsExist, setItemExist]= useState<string>();
-
     useEffect(()=>{
-        setItems(data)
-    })
+        setItems(itemsList)
+    },[itemsList])
 
-    useEffect(()=>{
-        if(items.length===0)setItemExist('Создайте первую задачу!')
-        else setItemExist('')
+    const isItemExist = useMemo(()=>{
+        return items.length === 0
     },[items])
 
-    
-    
-
-    const remove = (id:string) => {
-        setItems(prev => prev.filter(item => item.id !== id && !item.isSelect))
-        deleteItem(id)
-    }
 
     const complete = (id:string) => {
-        setItems(prev => prev.map(item => {
-            if (item.id === id || item.isSelect) return { ...item, isCompleted: !item.isCompleted, isSelect:false }
-            else return item
-        }))
+       
+        dispatch(actions.complete(id))
+
+         // setItems(prev => prev.map(item => {
+        //     if (item.id === id || item.isSelect) return { ...item, isCompleted: !item.isCompleted, isSelect:false }
+        //     else return item
+        // }))
+
     }
-    
+    const selectAll=(isSelect:boolean)=>{
+        setItems(prev => prev.map(item => {return { ...item, isSelect: isSelect}}))
+    }
     const select =(id:string)=>{
-        if(id){
+        if(typeof(id) === 'string'){
             setItems(prev => prev.map(item => {
                 if (item.id === id) return { ...item, isSelect: !item.isSelect }
                 else return item
@@ -56,6 +53,23 @@ const ToDoPageContainer=({data,postItem, deleteItem}:Props)=>{
         }
         
     }
+    
+    const remove = (id?:string) => {
+
+        const selectedItems = new Set<string>();
+        
+        if (id) selectedItems.add(id);
+
+        items.forEach((item)=>{
+            if(item.isSelect)selectedItems.add(item.id)
+        })
+
+        dispatch(actions.delete(Array.from(selectedItems)));
+
+        //setItems(prev => prev.filter(item => item.id !== id && !item.isSelect))
+        
+    }
+
     const add = (title: string) => {
         let lastIndex='0';
         if(items.length!==0){
@@ -68,25 +82,30 @@ const ToDoPageContainer=({data,postItem, deleteItem}:Props)=>{
             isCompleted: false,
             isSelect:false,
         }
-        setItems([...items,item])
-        postItem(item)
+        dispatch(actions.add(item));
+        // setItems([...items,item])
+        
 
+    }
+
+    const exit = () =>{
+        console.log('exit')
+        dispatch(actionsAuth.exit());
     }
 
     return (
         <Div >
             <Link to={Paths.SignIn}>
-                <Button small={false}>Выйти</Button>
+                <Button small={false} onClick={exit}>Выйти</Button>
             </Link>
-            <ToDoHeader addItem={(title)=>add(title)}/>
+            <ToDoHeader addItem={(title)=>add(title)} onDelete={remove} selectAll={(selectValue)=>selectAll(selectValue)}/>
             <ItemList
                 items={items}
                 deleteItem={remove}
                 completeItem={complete}
                 selectItem={select}
             />
-            <Title light>{itemsExist}</Title>
-           
+            <div>{ isItemExist ?  <Title light>{'Создайте первую задачу!'} </Title> : <span/>} </div>
         </Div>
         )
 }

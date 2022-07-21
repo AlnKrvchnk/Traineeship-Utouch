@@ -1,21 +1,23 @@
 import { api } from "../../app/api";
-import { User } from "../../types/User";
+import { User } from "../../app/types/User";
 import SignInPageContainer from "../containers/SignInPageContainer/SignInPageContainer"
+import {useLocation, useNavigate} from "react-router-dom";
+import {useDispatch} from "../../hooks/useAppDispatch";
+import {actions, loginThunk} from "../../app/store/auth/slice";
+import { useTypedSelectorHook } from "../../hooks/useTypedSelector";
 
 const SignIn =()=>{
-    
-    const authRequest=(user:User)=>{
-        // fetch('http://jsonplaceholder.typicode.com/users/1')
-        //     .then(response => response.json())
-        //     .then(json => console.log(json))
-        //     .catch(err=>console.log(err))
-        api.auth.signIn(user)
-            .then(res=>alert('Пользователь вошёл в систему!'))
-            .catch(err=>alert(err))
-    }
-    
 
-    return (<SignInPageContainer onAuth={(user)=>authRequest(user)}></SignInPageContainer>) 
+    const dispatch = useDispatch()
+    // const auth = useTypedSelectorHook(state => state.auth)
+
+    const login = (user:User) => {
+        dispatch(loginThunk(user))
+    }
+
+    return (<div>
+            <SignInPageContainer onAuth={(user)=>login(user)}></SignInPageContainer>
+    </div>) 
 };
 
 export default SignIn

@@ -9,6 +9,3 @@ export interface Item {
 export interface CreateItemToDo {
     title: string
 }
-
-export interface UpdateItemToDo extends Partial<CreateItemToDo> {}
-

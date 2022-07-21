@@ -1,4 +1,4 @@
-import {Link} from '../types/Link'
+import {Link} from '../app/types/Link'
 
 export enum Paths {
     Main = '/Traineeship-Utouch/',

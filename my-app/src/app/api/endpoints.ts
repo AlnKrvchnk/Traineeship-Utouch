@@ -1,15 +1,15 @@
 export const todo = {
     getAll: () => '/Item',
     getById: (id: number) => `/Item/${id}`,
-    create: () => '/todo',
-    delete: (id: string) =>`/todo/${id}`,
-    update: (id: number) => `/todo/${id}`,
+    create: () => '/Item',
+    delete: (id: string) =>`/Item/${id}`,
+    update: (id: number) => `/Item/${id}`,
 }
 export const auth = {
     // getAll: () => '/users',
     // getById: (id: number) => `/auth/${id}`,
-    signUp: () => '/signUp',
-    signIn: () => '/signIn',
+    signUp: () => '/User',
+    signIn: () => '/User',
     // delete: (id: number) =>`/auth/${id}`,
     // update: (id: number) => `/auth/${id}`,
 }

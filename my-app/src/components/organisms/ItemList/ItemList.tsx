@@ -1,4 +1,5 @@
-import {Item} from '../../../types/Item'
+import {Item} from '../../../app/types/Item'
+import { useTypedSelectorHook } from '../../../hooks/useTypedSelector'
 import ItemContainer from '../ItemContainer/ItemContainer'
 import {Div} from './StyledItemList'
 
@@ -11,7 +12,7 @@ interface Props{
 }
 
 const ItemList = ({items, deleteItem,completeItem,selectItem}:Props) => {
-
+    
     return (
         <Div>
             {items.map((item, index) => (

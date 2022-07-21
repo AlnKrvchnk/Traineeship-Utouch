@@ -1,22 +1,27 @@
-import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import { Paths } from "./routes/Paths";
-import { SignIn, SignUp, ToDo, ToDoDetail } from "./components/pages/index";
+import Loading from "./routes/Loading"
+import Public from "./routes/Public";
+import Private from "./routes/Private";
+
+import useAuth from "./hooks/useAuth";
+import useLoad from "./hooks/useLoadData";
+import useToken from "./hooks/useToken";
+
 
 function App() {
+
+  const hasToken = useToken();
+  const {isAuth, loading} = useAuth();
+  const isLoad = useLoad();
+
+  if (loading) return <Loading/>
+
   return (
     <div className="App">
-      <Routes>
-        <Route
-          path={Paths.Main}
-          element={<Navigate to={Paths.SignIn} replace />}
-        />
-        <Route path={Paths.SignIn} element={<SignIn />} />
-        <Route path={Paths.SignUp} element={<SignUp />} />
-        <Route path={Paths.ToDo} element={<ToDo />} />
-        <Route path={`${Paths.ToDo}/:id`} element={<ToDoDetail />} />
-        <Route path={"*"} element={<div>404</div>} />
-      </Routes>
+        { hasToken || isAuth ? 
+          (isLoad ? <Private/> : <Loading/> )
+        : 
+          <Public/>
+        }
     </div>
   );
 }
