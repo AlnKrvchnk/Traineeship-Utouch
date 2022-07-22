@@ -5,41 +5,47 @@ import Private from "./routes/Private";
 import useAuth from "./hooks/useAuth";
 import useLoad from "./hooks/useLoadData";
 import useToken from "./hooks/useToken";
+import { useContext} from "react";
+import StoreContext from "./contexts/StoreContext";
+import { observer } from "mobx-react";
 
 
 function App() {
 
+  const store = useContext(StoreContext);
+  
   const hasToken = useToken();
-  const {isAuth, loading} = useAuth();
-  const isLoad = useLoad();
-
-  if (loading) return <Loading/>
+  const isAuth = store.auth.isAuth;
+  const isLoad = store.todo.isLoad;
 
   return (
     <div className="App">
         { hasToken && isAuth ? 
           (isLoad ? <Private/> : <Loading/> )
         : 
-          <Public/>
+        <Public/>
         }
     </div>
   );
 }
 
-export default App;
+export default observer(App);
 
-// const navigate = useNavigate()
-//     const location = useLocation()
+// function App() {
 
-//     useEffect(() => {
+//   const hasToken = useToken();
+//   const {isAuth, loading} = useAuth();
+//   const isLoad = useLoad();
 
-//     }, [location])
+//   if (loading) return <Loading/>
 
-//     useEffect(() => {
-//         if (params.id) {
-//             const id = parseInt(params.id)
-//             if (id === 5) {
-//                 navigate(Paths.SignIn, { state: location.pathname })
-//             }
+//   return (
+//     <div className="App">
+//         { hasToken && isAuth ? 
+//           (isLoad ? <Private/> : <Loading/> )
+//         : 
+//           <Public/>
 //         }
-//     }, [params.id])
+//     </div>
+//   );
+// }

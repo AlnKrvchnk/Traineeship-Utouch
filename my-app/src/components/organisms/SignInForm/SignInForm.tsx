@@ -32,7 +32,7 @@ const SignInForm = ({onAuth}:Props) => {
 
   const onSubmit = ()=>{
     if (!isDisable){
-      const user:User={Name:userName,password:userPassword};
+      const user:User={name:userName,password:userPassword};
       onAuth(user)
   }};
 

@@ -1,12 +1,10 @@
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
+import Auth from "./Auth";
 import ToDo from "./ToDo";
 import NotFound from "./ToDo";
 import ToDoDetail from "./ToDoDetail";
 
 export {
-    SignIn,
-    SignUp,
+    Auth,
     ToDo,
     NotFound,
     ToDoDetail,

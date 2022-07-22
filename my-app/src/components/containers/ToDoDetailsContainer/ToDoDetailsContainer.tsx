@@ -15,28 +15,14 @@ import { useTypedSelectorHook } from "../../../hooks/useTypedSelector";
 import { actions as actionsAuth } from "../../../app/store/auth/slice";
 
 interface Props {
-  currentItemId: string;
+  items:Item[];
+  currentItem:Item | undefined;
+  exit:()=>void;
 }
 
-const ToDoDetailsContainer = ({ currentItemId }: Props) => {
+const ToDoDetailsContainer = ({items, currentItem, exit }: Props) => {
 
-  const dispatch = useDispatch()
-
-  const itemsList:Item [] = useTypedSelectorHook(state => state.todo.items)
   
-  const [currentItem, setCurrentItem] = useState<Item>();
-  const [items, setItems] = useState<Item[]>([]);
-
-  useEffect(()=>{
-    setItems(itemsList);
-    const currentItem = items.find((item)=>String(item.id) === currentItemId);
-    setCurrentItem(currentItem);
-  })
-
-  const exit = () =>{
-    console.log('exit')
-    dispatch(actionsAuth.exit());
-  }
 
   return (
     <div>

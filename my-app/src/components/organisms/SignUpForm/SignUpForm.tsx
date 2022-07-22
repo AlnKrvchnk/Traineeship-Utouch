@@ -4,14 +4,18 @@ import Input from "../../atoms/Input/Input";
 import StyledForm from "../../containers/AuthContainer/StyledAuthForm";
 
 import CheckboxLabel from "../../molecules/CheckboxLabel/CheckboxLabel";
-import { useMemo, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Paths } from "../../../routes/Paths";
 import { api } from "../../../app/api";
 import { User } from "../../../app/types/User";
+import StoreContext from "../../../contexts/StoreContext";
 
+export interface Props{
+  onAuth:(user:User)=>void
+}
 
-const SignUpForm = () => {
+const SignUpForm = ({onAuth}:Props) => {
   const [isChecked, setChecked] = useState<boolean>(false);
   const [userName, setUserName] = useState<string>('');
   const [userPassword, setPassword] = useState<string>('');
@@ -22,10 +26,13 @@ const SignUpForm = () => {
 
   const onSubmit = ()=>{
     if (!isDisable){
-      const user:User={Name:userName,password:userPassword};
-      api.auth.signIn(user)
-        .then(res=>alert('Пользователь добавлен!'))
-        .catch(err=>alert(err))
+      const user:User={name:userName,password:userPassword};
+      onAuth(user)
+
+    
+      // api.auth.signIn(user)
+      //   .then(res=>alert('Пользователь добавлен!'))
+      //   .catch(err=>alert(err))
   }};
   
   return (
