@@ -1,7 +1,7 @@
-import AuthStore from "./auth.store";
-import todoStore from "./todo.store";
+import AuthStore from './auth.store';
+import TodoStore from './todo.store';
 
-export default class AppStore{
-    todo=new todoStore()
-    auth= new AuthStore ()
+export default class AppStore {
+    todo = new TodoStore();
+    auth = new AuthStore();
 }

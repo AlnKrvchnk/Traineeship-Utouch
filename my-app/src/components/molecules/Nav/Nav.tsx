@@ -8,14 +8,14 @@ export interface Props {
     links:Link[]
 }
 
-const Nav =({links}:Props)=>{
+const Nav =({links}:Props) => {
     
     return(
         <StyledNav>
             <Div>
-            {links.map((link,index)=>(
-                <NavLink to={link.url} key={index}>{link.title}</NavLink>
-            ))}</Div>
+                {links.map((link, index) => (
+                    <NavLink to={link.url} key={index}>{link.title}</NavLink>
+                ))}</Div>
         </StyledNav> 
     )
 }

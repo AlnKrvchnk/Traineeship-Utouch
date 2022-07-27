@@ -1,67 +1,64 @@
-import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {AppThunk} from "../index";
-import {api} from "../../api";
-import { User } from "../../types/User";
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { api } from '../../api';
+import { User } from '../../types/User';
 
 type State = {
-    loading: boolean
-    user?: User
-    isAuth: boolean
-}
+    loading: boolean;
+    user?: User;
+    isAuth: boolean;
+};
 
 const initialState: State = {
     loading: false,
-    isAuth: true,
-    // isAuth: false
-}
+    isAuth: false,
+};
 
 const slice = createSlice({
     name: 'auth',
     initialState: initialState,
     reducers: {
-        // setUser(state: State, action: PayloadAction<User | undefined>) {
-        //     const {payload} = action
-        //     state.user = payload
-        //     state.isAuth = payload != null
-        //     state.loading = false
-        // },
-        // setLoading(state: State, action: PayloadAction<boolean>) {
-        //     state.loading = action.payload
-        // }
+        setUser(state: State, action: PayloadAction<User | undefined>) {
+            const { payload } = action;
+            state.user = payload;
+            state.isAuth = payload != null;
+            state.loading = false;
+        },
+        setLoading(state: State, action: PayloadAction<boolean>) {
+            state.loading = action.payload;
+        },
 
-        exit(state: State, action: PayloadAction<User | undefined>){
-            localStorage.clear()
-            state.loading = false
-            state.user = undefined
-            state.isAuth = false
-        }
-        
+        exit(state: State, action: PayloadAction<User | undefined>) {
+            localStorage.clear();
+            state.loading = false;
+            state.user = undefined;
+            state.isAuth = false;
+        },
     },
-    extraReducers: builder => {
+    extraReducers: (builder) => {
         builder
             .addCase(loginThunk.pending, (state) => {
-                state.loading = true
+                state.loading = true;
             })
             .addCase(loginThunk.fulfilled, (state, { payload }) => {
-                localStorage.setItem('isAuth', 'true')
-                state.loading = false
-                state.user = payload as any
-                state.isAuth = true
+                localStorage.setItem('isAuth', 'true');
+                state.loading = false;
+                state.user = payload as any;
+                state.isAuth = true;
             })
             .addCase(loginThunk.rejected, (state, { payload }) => {
-                state.loading = false
-                state.user = undefined
-                state.isAuth = false
-            })
+                state.loading = false;
+                state.user = undefined;
+                state.isAuth = false;
+            });
+    },
+});
+
+export const loginThunk = createAsyncThunk(
+    '@@auth/login',
+    async (user: User) => {
+        return await api.auth.signIn(user);
     }
-})
+);
 
-
-export const loginThunk = createAsyncThunk('@@auth/login', async (user:User) => {
-    return await api.auth.signIn(user);
-})
-
-
-
-export const reducer = slice.reducer
-export const actions = slice.actions
+export const reducer = slice.reducer;
+export const actions = slice.actions;

@@ -2,7 +2,7 @@ export const todo = {
     getAll: () => '/Item',
     getById: (id: number) => `/Item/${id}`,
     create: () => '/Item',
-    delete: (id: string) =>`/Item/${id}`,
+    delete: (id: string) => `/Item/${id}`,
     update: (id: number) => `/Item/${id}`,
 }
 export const auth = {

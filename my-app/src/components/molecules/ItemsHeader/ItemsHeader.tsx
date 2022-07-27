@@ -9,23 +9,23 @@ interface Props {
 }
 
 const ItemsHeader = ({ isSelect, onSelect, onDelete }: Props) => {
-  const [isChecked, setChecked] = useState<boolean>(false);
+    const [isChecked, setChecked] = useState<boolean>(false);
 
-  const setSelect = useEffect(() => {
-    setChecked(isSelect);
-  });
+    const setSelect = useEffect(() => {
+        setChecked(isSelect);
+    });
 
-  const handleChange = () => {
-    setChecked(!isChecked);
-    onSelect(isChecked);
-  };
+    const handleChange = () => {
+        setChecked(!isChecked);
+        onSelect(isChecked);
+    };
 
-  return (
-    <Div>
-      <Checkbox primary checked={isChecked} onChange={handleChange}></Checkbox>
-      <Button onClick={onDelete}>X</Button>
-    </Div>
-  );
+    return (
+        <Div>
+            <Checkbox primary checked={isChecked} onChange={handleChange}></Checkbox>
+            <Button onClick={onDelete}>X</Button>
+        </Div>
+    );
 };
 
 export default ItemsHeader;

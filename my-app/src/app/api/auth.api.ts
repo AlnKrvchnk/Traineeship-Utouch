@@ -7,10 +7,10 @@ export default class TodoApi {
     constructor(private readonly api: Api) {}
 
     public signIn(user:User): Promise<Item> {
-        return this.api.post<User, Item>(auth.signIn(),user)
+        return this.api.post<User, Item>(auth.signIn(), user)
     }
 
     public signUp(user:User): Promise<Item> {
-        return this.api.post<User,Item >(auth.signUp(), user)
+        return this.api.post<User, Item >(auth.signUp(), user)
     }
 }

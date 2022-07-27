@@ -1,10 +1,15 @@
-import Checkbox, {CheckboxProps} from "../../atoms/Checkbox/Checkbox";
-import { TitleThird } from "../../atoms/TextElement/TextElement";
+import Checkbox, { CheckboxProps } from '../../atoms/Checkbox/Checkbox';
+import { TitleThird } from '../../atoms/TextElement/TextElement';
 
-export interface CheckboxLabelProps extends CheckboxProps {
-}
+export type CheckboxLabelProps = CheckboxProps;
 
-const  CheckboxLabel =({id,primary,children="label",checked,onChange}:CheckboxLabelProps)=>{    
+const CheckboxLabel = ({
+    id,
+    primary,
+    children = 'label',
+    checked,
+    onChange,
+}: CheckboxLabelProps) => {
     return (
         <div>
             <Checkbox
@@ -15,9 +20,8 @@ const  CheckboxLabel =({id,primary,children="label",checked,onChange}:CheckboxLa
             ></Checkbox>
             <label htmlFor={id}>
                 <TitleThird light={true}>{children}</TitleThird>
-                </label>
-           
+            </label>
         </div>
-    )
-}
-export default  CheckboxLabel;
+    );
+};
+export default CheckboxLabel;

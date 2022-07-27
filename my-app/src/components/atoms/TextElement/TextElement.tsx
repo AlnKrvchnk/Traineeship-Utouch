@@ -2,7 +2,7 @@
 import styled from "styled-components";
 import { color } from "../../../styles/variables";
 
-export interface Props  {
+export interface Props {
   light: boolean;
   center?: boolean;
 }
@@ -14,17 +14,17 @@ const Title = styled.h1<Props>`
   display: inline-block;
 
   ${(props) =>
-    props.light &&
+        props.light &&
     `
         color:${color.background}
     `}
   ${(props) =>
-    !props.light &&
+        !props.light &&
     `
         color:${color.dark}
     `}
     ${(props) =>
-    props.center &&
+        props.center &&
     `
         text-align: center;
     `}
@@ -36,17 +36,17 @@ display: inline-block;
   font-size: 24px;
   letter-spacing: 0.16em;
   ${(props) =>
-    props.light &&
+        props.light &&
     `
         color:${color.background}
     `}
   ${(props) =>
-    !props.light &&
+        !props.light &&
     `
         color:${color.dark}
     `}
     ${(props) =>
-    props.center &&
+        props.center &&
     `
         text-align: center;
     `}
@@ -57,17 +57,17 @@ display: inline-block;
   font-weight: 4  00;
   font-size: 20px;
   ${(props) =>
-    props.light &&
+        props.light &&
     `
         color:${color.background}
     `}
   ${(props) =>
-    !props.light &&
+        !props.light &&
     `
         color:${color.dark}
     `}
     ${(props) =>
-    props.center &&
+        props.center &&
     `
         text-align: center;
     `}
@@ -78,17 +78,17 @@ display: inline-block;
   font-weight: 400;
   font-size: 14px;
   ${(props) =>
-    props.light &&
+        props.light &&
     `
         color:${color.background}
     `}
   ${(props) =>
-    !props.light &&
+        !props.light &&
     `
         color:${color.dark}
     `}
     ${(props) =>
-    props.center &&
+        props.center &&
     `
         text-align: center;
     `}
@@ -97,17 +97,17 @@ const Span = styled.span<Props>`
   font-weight: 200;
   font-size: 12px;
   ${(props) =>
-    props.light &&
+        props.light &&
     `
         color:${color.background}
     `}
   ${(props) =>
-    !props.light &&
+        !props.light &&
     `
         color:${color.dark}
     `}
     ${(props) =>
-    props.center &&
+        props.center &&
     `
         text-align: center;
     `}

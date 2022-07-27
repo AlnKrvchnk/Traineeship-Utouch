@@ -9,22 +9,21 @@ interface Props{
     onDelete:()=>void;
 }
 
-const ToDoHeader = ({addItem, selectAll, onDelete}:Props)=>{
+const ToDoHeader = ({addItem, selectAll, onDelete}:Props) => {
 
     const [isSelect, setSelect]= useState<boolean>(false);
 
-    const handleSelect=()=>{
+    const handleSelect=() => {
         selectAll(!isSelect);
         setSelect(!isSelect);
         
     }
-
     
     return(<Div>
-        <AddItem onAdd={(title)=>addItem(title)}/>
+        <AddItem onAdd={(title) => addItem(title)}/>
         <Button small onClick={handleSelect}> {isSelect ? 'Отменить':'Выделить все'} </Button>
         <Button small onClick={onDelete}>Удалить </Button>
-        </Div>
+    </Div>
     )
 }
 export default ToDoHeader;

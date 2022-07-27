@@ -5,8 +5,6 @@ const StyledNav= styled.nav`
   overflow: hidden;
   `;
 
-
-
 const Div= styled.div`
     display: flex;
     width:100%;
@@ -16,4 +14,4 @@ const Div= styled.div`
     }
   `;
 
-export { Div,  StyledNav};
+export { Div, StyledNav};

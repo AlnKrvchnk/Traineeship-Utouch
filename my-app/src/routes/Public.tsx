@@ -2,7 +2,6 @@ import {Route, Routes, Navigate} from "react-router-dom";
 import {Auth} from "../components/pages/index"
 import {Paths} from "./Paths";
 
-
 const Public = () => {
     return (
         <Routes>

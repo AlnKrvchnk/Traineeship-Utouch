@@ -6,7 +6,6 @@ export interface Props {
     primary:boolean
 } 
 
-
 const StyledInput = styled.input<Props>`
   padding: 8px 16px;
   font-size: 20px;
@@ -30,7 +29,7 @@ const StyledInput = styled.input<Props>`
   }
 
   ${(props) =>
-    props.primary &&`   
+        props.primary &&`   
         color: ${color.background};
         &::placeholder {
             color: ${color.background};
@@ -44,7 +43,7 @@ const StyledInput = styled.input<Props>`
     
      `}
   ${(props) =>
-    !props.primary &&`
+        !props.primary &&`
         border-radius: 32px 0 0 32px;
         color: ${color.background};
         border-color:${color.background};

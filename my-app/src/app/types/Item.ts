@@ -1,7 +1,6 @@
 export type dateT = string;
 export type idT = number;
 
-
 export interface Item {
     id:idT,
     title: string,

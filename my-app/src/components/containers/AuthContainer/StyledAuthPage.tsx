@@ -15,4 +15,4 @@ const StyledForm=styled.div`
     min-height: 100vh;
     width:45vw;
 `
-export {StyledPage,StyledForm}
+export {StyledPage, StyledForm}

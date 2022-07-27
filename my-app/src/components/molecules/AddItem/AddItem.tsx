@@ -6,7 +6,7 @@ interface Props {
     onAdd: (title: string) => void
 }
 
-const AddItem =({onAdd}:Props)=>{   
+const AddItem =({onAdd}:Props) => {   
     const [newItem, setNewItem] = useState<string>('');
     
     const isDisabled = useMemo(() => {
@@ -26,7 +26,7 @@ const AddItem =({onAdd}:Props)=>{
                 primary={false}
                 placeholder={'Новая задача'}
                 value={newItem}
-                onChange={(e)=>setNewItem(e.target.value)}
+                onChange={(e) => setNewItem(e.target.value)}
             ></Input>
             <StyledButton onClick={add} disabled={isDisabled}>Добавить</StyledButton>
 

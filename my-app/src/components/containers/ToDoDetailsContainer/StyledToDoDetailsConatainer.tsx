@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import {color} from '../../../styles/variables' ;
 
-
 export const Div =styled.div`
     padding:24px 48px 48px  48px;
 `

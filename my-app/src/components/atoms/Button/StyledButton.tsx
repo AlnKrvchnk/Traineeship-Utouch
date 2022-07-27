@@ -34,7 +34,7 @@ const StyledButton = styled.button<Props>`
     border-color: ${color.primaryLight};
   }
   ${(props) =>
-    props.small &&
+        props.small &&
     `
        font-size: 20px;
     padding: 8px 20px;

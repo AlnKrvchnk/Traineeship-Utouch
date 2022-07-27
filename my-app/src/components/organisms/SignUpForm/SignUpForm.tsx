@@ -1,84 +1,71 @@
-// import { useForm } from "react-hook-form";
-import Button from "../../atoms/Button/Button";
-import Input from "../../atoms/Input/Input";
-import StyledForm from "../../containers/AuthContainer/StyledAuthForm";
+import { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { User } from '../../../app/types/User';
+import { Paths } from '../../../routes/Paths';
+import Button from '../../atoms/Button/Button';
+import Input from '../../atoms/Input/Input';
+import StyledForm from '../../containers/AuthContainer/StyledAuthForm';
+import CheckboxLabel from '../../molecules/CheckboxLabel/CheckboxLabel';
 
-import CheckboxLabel from "../../molecules/CheckboxLabel/CheckboxLabel";
-import { useContext, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
-import { Paths } from "../../../routes/Paths";
-import { api } from "../../../app/api";
-import { User } from "../../../app/types/User";
-import StoreContext from "../../../contexts/StoreContext";
-
-export interface Props{
-  onAuth:(user:User)=>void
+export interface Props {
+    onAuth: (user: User) => void;
 }
 
-const SignUpForm = ({onAuth}:Props) => {
-  const [isChecked, setChecked] = useState<boolean>(false);
-  const [userName, setUserName] = useState<string>('');
-  const [userPassword, setPassword] = useState<string>('');
+const SignUpForm = ({ onAuth }: Props) => {
+    const [isChecked, setChecked] = useState<boolean>(false);
+    const [userName, setUserName] = useState<string>('');
+    const [userPassword, setPassword] = useState<string>('');
 
-  const isDisable = useMemo(() => {
-    return userName === undefined || userPassword === undefined || !isChecked;
-  }, [isChecked, userName, userPassword]);
+    const isDisable = useMemo(() => {
+        return (
+            userName === undefined || userPassword === undefined || !isChecked
+        );
+    }, [isChecked, userName, userPassword]);
 
-  const onSubmit = ()=>{
-    if (!isDisable){
-      const user:User={name:userName,password:userPassword};
-      onAuth(user)
+    const onSubmit = () => {
+        if (!isDisable) {
+            const user: User = { name: userName, password: userPassword };
+            onAuth(user);
+        }
+    };
 
-    
-      // api.auth.signIn(user)
-      //   .then(res=>alert('Пользователь добавлен!'))
-      //   .catch(err=>alert(err))
-  }};
-  
-  return (
-    <StyledForm onSubmit={onSubmit}>
-      <span />
-      <span />
+    return (
+        <StyledForm onSubmit={onSubmit}>
+            <span />
+            <span />
 
-      <Input
-        id="userName"
-        primary={true}
-        placeholder={"Введите имя"}
-        value={userName}
-        onChange={(e) => setUserName(e.target.value)}
-        // {...register("userName", {
-        //   required: "Обязательное поле!",
-        // })}
-      />
+            <Input
+                id="userName"
+                primary={true}
+                placeholder={'Введите имя'}
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+            />
 
-      <Input
-        primary={true}
-        placeholder={"Введите пароль"}
-        value={userPassword}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+            <Input
+                primary={true}
+                placeholder={'Введите пароль'}
+                value={userPassword}
+                onChange={(e) => setPassword(e.target.value)}
+            />
 
-      <CheckboxLabel
-        id="checkbox"
-        primary={true}
-        checked={isChecked}
-        onChange={() => setChecked(!isChecked)}
-      >
-        Бла-бла-бла
-      </CheckboxLabel>
+            <CheckboxLabel
+                id="checkbox"
+                primary={true}
+                checked={isChecked}
+                onChange={() => setChecked(!isChecked)}
+            >
+                Бла-бла-бла
+            </CheckboxLabel>
 
-      <span />
-      <Link to={Paths.ToDo}>
-        <Button
-          small={false}
-          disabled={isDisable}
-          onClick={onSubmit}
-        >
-          Вход
-        </Button>
-      </Link>
-    </StyledForm>
-  );
+            <span />
+            <Link to={Paths.ToDo}>
+                <Button small={false} disabled={isDisable} onClick={onSubmit}>
+                    Вход
+                </Button>
+            </Link>
+        </StyledForm>
+    );
 };
 
 export default SignUpForm;

@@ -7,7 +7,7 @@ interface Props{
     date:Item['date'];
 }
 
-const ItemsInform= ({title,date}:Props) =>{
+const ItemsInform= ({title, date}:Props) => {
     return (
         <Div>
             <TitleSecondary light>{title}</TitleSecondary>

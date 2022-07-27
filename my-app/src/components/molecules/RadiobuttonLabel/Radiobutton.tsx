@@ -1,10 +1,9 @@
 import Radiobutton, {RadiobuttonProps} from "../../atoms/Radiobutton/Radiobutton";
 import { TitleSecondary } from "../../atoms/TextElement/TextElement";
 
-export interface RadiobuttonLabelProps extends RadiobuttonProps {
-}
+export type RadiobuttonLabelProps = RadiobuttonProps
 
-const  RadiobuttonLabel =({id,primary,children="label",onChange}:RadiobuttonLabelProps)=>{    
+const RadiobuttonLabel =({id, primary, children="label", onChange}:RadiobuttonLabelProps) => {    
     return (
         <div>
             <Radiobutton
@@ -15,9 +14,9 @@ const  RadiobuttonLabel =({id,primary,children="label",onChange}:RadiobuttonLabe
             ></Radiobutton>
             <label htmlFor={id}>
                 <TitleSecondary light={true}>{children}</TitleSecondary>
-                </label>
+            </label>
            
         </div>
     )
 }
-export default  RadiobuttonLabel;
+export default RadiobuttonLabel;

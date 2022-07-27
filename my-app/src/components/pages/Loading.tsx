@@ -1,22 +1,14 @@
-import { useContext, useEffect } from "react";
-import StoreContext from "../../contexts/StoreContext";
-import { Title } from "../atoms/TextElement/TextElement";
+import { useEffect } from 'react';
+import { useAppContext } from '../../contexts/StoreContext';
+import { Title } from '../atoms/TextElement/TextElement';
 
-const Loading = ()=>{
-    const store = useContext(StoreContext);
+const Loading = () => {
+    const store = useAppContext();
 
     useEffect(() => {
-        store.todo.getAll()
+        store.todo.getAll();
     });
 
-     // const dispatch = useDispatch()
-
-    // useEffect(() => {
-    //     dispatch(getTodoThunk())
-    // });
-    
-    return (
-        <Title light={false}>Loading...</Title> 
-    )
-}
-export default Loading
+    return <Title light={false}>Loading...</Title>;
+};
+export default Loading;

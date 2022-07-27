@@ -1,51 +1,31 @@
-import Loading from "./routes/Loading"
-import Public from "./routes/Public";
-import Private from "./routes/Private";
-
-import useAuth from "./hooks/useAuth";
-import useLoad from "./hooks/useLoadData";
-import useToken from "./hooks/useToken";
-import { useContext} from "react";
-import StoreContext from "./contexts/StoreContext";
-import { observer } from "mobx-react";
-
+import { observer } from 'mobx-react';
+import { useAppContext } from './contexts/StoreContext';
+import useToken from './hooks/useToken';
+import Private from './routes/Private';
+import Public from './routes/Public';
 
 function App() {
+    const store = useAppContext();
+    const hasToken = useToken();
+    const isAuth = store.auth.isAuth;
+    const isLoad = store.todo.isLoad;
 
-  const store = useContext(StoreContext);
-  
-  const hasToken = useToken();
-  const isAuth = store.auth.isAuth;
-  const isLoad = store.todo.isLoad;
-
-  return (
-    <div className="App">
-        { hasToken && isAuth ? 
-          (isLoad ? <Private/> : <Loading/> )
-        : 
-        <Public/>
-        }
-    </div>
-  );
+    return (
+        <div className="App">
+            {hasToken && isAuth ? <Private /> : <Public />}
+        </div>
+        // <div className="App">
+        //     {hasToken && isAuth ? (
+        //         isLoad ? (
+        //             <Private />
+        //         ) : (
+        //             <Loading />
+        //         )
+        //     ) : (
+        //         <Public />
+        //     )}
+        // </div>
+    );
 }
 
 export default observer(App);
-
-// function App() {
-
-//   const hasToken = useToken();
-//   const {isAuth, loading} = useAuth();
-//   const isLoad = useLoad();
-
-//   if (loading) return <Loading/>
-
-//   return (
-//     <div className="App">
-//         { hasToken && isAuth ? 
-//           (isLoad ? <Private/> : <Loading/> )
-//         : 
-//           <Public/>
-//         }
-//     </div>
-//   );
-// }

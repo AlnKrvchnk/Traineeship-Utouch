@@ -15,11 +15,11 @@ export const Container =styled.div<DivProps>`
     border: 3px solid ${color.background};
     border-radius:24px;
     transition: all 0.3s ease;
-    ${props=>props.isComplited &&`
+    ${props => props.isComplited &&`
         background: ${color.primaryDark};
         border: 3px solid ${color.primaryDark};
     `}
-    ${props=>props.isSelected &&`
+    ${props => props.isSelected &&`
         background: ${color.primaryDark};
         border: 3px solid ${color.background};
     `}

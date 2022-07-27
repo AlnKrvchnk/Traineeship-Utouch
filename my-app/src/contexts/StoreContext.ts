@@ -1,14 +1,13 @@
-import React from "react"
-import { useContext } from "react"
-import AppStore from "../app/mobx"
+import React, { useContext } from 'react';
+import AppStore from '../app/mobx';
 
-// interface AppContextType{
-//     store?:AppStore
-// }
-
-const StoreContext=React.createContext <AppStore>(new AppStore())
-export const useAppContext =()=>{
-    const context =useContext (StoreContext)
-    return context as AppStore
+interface AppContextType extends AppStore {
+    store?: AppStore;
 }
-export default StoreContext
+
+const StoreContext = React.createContext<AppContextType>(new AppStore());
+export const useAppContext = () => {
+    const context = useContext(StoreContext);
+    return context as AppContextType;
+};
+export default StoreContext;

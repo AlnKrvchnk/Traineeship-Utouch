@@ -2,7 +2,6 @@ import { TitleSecondary } from "../../atoms/TextElement/TextElement";
 import { DateText } from "../../atoms/TextElement/Date";
 import { dateT } from "../../../app/types/Item";
 
-
 interface Props {
   title: string;
   date: dateT;
@@ -14,16 +13,16 @@ interface Props {
 }
 
 const Item = ({
-  title,
-  date,
+    title,
+    date,
 }: Props) => {
 
-  return (
-    <div>
-    <TitleSecondary light={false}>{title}</TitleSecondary>
-    <br />
-    <DateText light={false}>{date}</DateText>
-    </div>
-  );
+    return (
+        <div>
+            <TitleSecondary light={false}>{title}</TitleSecondary>
+            <br />
+            <DateText light={false}>{date}</DateText>
+        </div>
+    );
 };
 export default Item;

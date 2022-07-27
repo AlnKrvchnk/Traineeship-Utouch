@@ -6,8 +6,6 @@ export interface Props {
     primary:boolean
 }
 
-
-
 export const StyledRadiobutton = styled.input<Props>`
   opacity: 0;
   height: 24px;
@@ -32,7 +30,7 @@ export const StyledLabel = styled.label<ILabel>`
     margin-right: 16px;
   }
   ${(props) =>
-    props.checked &&
+        props.checked &&
     `
         &:after{
             content: '';
@@ -45,7 +43,7 @@ export const StyledLabel = styled.label<ILabel>`
             position: absolute;
         }`}
   ${(props) =>
-    props.primary &&
+        props.primary &&
     `
         &:before{
             border-color:${color.background};
@@ -61,7 +59,7 @@ export const StyledLabel = styled.label<ILabel>`
         }
     `}
     ${(props) =>
-    !props.primary &&
+        !props.primary &&
     `
         &:before{
             border-color:${color.primary};

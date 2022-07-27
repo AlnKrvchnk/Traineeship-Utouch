@@ -6,8 +6,6 @@ export interface Props {
     primary:boolean
 }
 
-
-
 export const StyledCheckbox = styled.input<Props>`
   cursor:pointer;
   opacity: 0;
@@ -34,7 +32,7 @@ export const StyledLabel = styled.label<ILabel>`
     margin-right: 16px;
   }
   ${(props) =>
-    props.checked &&
+        props.checked &&
     `&:before {
     background:${color.background}
   }`}
