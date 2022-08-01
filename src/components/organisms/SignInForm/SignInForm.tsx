@@ -6,6 +6,7 @@ import Button from '../../atoms/Button/Button';
 import Input from '../../atoms/Input/Input';
 import StyledForm from '../../containers/AuthContainer/StyledAuthForm';
 import CheckboxLabel from '../../molecules/CheckboxLabel/CheckboxLabel';
+import { customValid } from '../../../utilites/valid';
 
 export interface Props {
     onAuth: (user: User) => void;
@@ -25,7 +26,12 @@ const SignInForm = ({ onAuth }: Props) => {
     const onSubmit = () => {
         if (!isDisable) {
             const user: User = { name: userName, password: userPassword };
-            onAuth(user);
+            try {
+                customValid(user);
+                onAuth(user);
+            } catch (err) {
+                alert(err);
+            }
         }
     };
 
